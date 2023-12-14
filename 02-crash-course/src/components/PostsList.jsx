@@ -6,9 +6,7 @@ import classes from "./PostsList.module.css";
 import Modal from "../ui/Modal";
 
 const PostsList = ({ isPosting, onStopPosting }) => {
-  const [posts, setPosts] = useState([
-    { author: "Dave", body: "No, this is sparta!" },
-  ]);
+  const [posts, setPosts] = useState([]);
 
   function onAddPostHandler(post) {
     setPosts((prevPosts) => [...prevPosts, post]);
@@ -21,11 +19,11 @@ const PostsList = ({ isPosting, onStopPosting }) => {
           <NewPost onAddPost={onAddPostHandler} onCancel={onStopPosting} />
         </Modal>
       )}
-      <ul className={classes.posts}>
+     {(posts.length > 0) ? <ul className={classes.posts}>
         {posts.map(({ author, body }) => (
           <Post key={Math.random()} author={author} body={body} />
         ))}
-      </ul>
+      </ul>: <h3>No post available yet, please add one</h3>}
     </>
   );
 };
