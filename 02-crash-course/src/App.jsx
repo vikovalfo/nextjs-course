@@ -12,7 +12,7 @@ function App() {
       <main>
         <PostsList
           isPosting={isModalVisible}
-          onStopPosting={() => setIsModalVisible(false)}
+          onStopPosting={() =>setIsModalVisible(false)}
         />
       </main>
     </>

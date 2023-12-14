@@ -16,6 +16,7 @@ const PostsList = ({ isPosting, onStopPosting }) => {
           <NewPost
             onAddAuthor={(author) => setEnteredAuthor(author)}
             onAddBody={(body) => setEnteredBody(body)}
+            onCancel={onStopPosting}
           />
         </Modal>
       )}
