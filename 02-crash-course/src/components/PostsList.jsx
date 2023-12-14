@@ -5,15 +5,14 @@ import NewPost from "./NewPost";
 import classes from "./PostsList.module.css";
 import Modal from "../ui/Modal";
 
-const PostsList = () => {
-  const [isModalVisible, setIsModalVisible] = useState(true);
+const PostsList = ({ isPosting, onStopPosting }) => {
   const [enteredBody, setEnteredBody] = useState("");
   const [enteredAuthor, setEnteredAuthor] = useState("");
 
   return (
     <>
-      {isModalVisible && (
-        <Modal onClose={() => setIsModalVisible(false)}>
+      {isPosting && (
+        <Modal onClose={onStopPosting}>
           <NewPost
             onAddAuthor={(author) => setEnteredAuthor(author)}
             onAddBody={(body) => setEnteredBody(body)}
