@@ -6,6 +6,7 @@ import Posts, { loader as fetchPostsLoader } from "./pages/Posts";
 import "./index.css";
 import NewPost, { action as submitPostAction } from "./pages/NewPost";
 import RootLayout from "./pages/RootLayout";
+import PostDetails, { loader as postDetailsLoader} from "./pages/PostDetails";
 
 const router = createBrowserRouter([
   {
@@ -22,6 +23,11 @@ const router = createBrowserRouter([
             element: <NewPost />,
             action: submitPostAction,
           },
+          {
+            path: '/edit-post/:id',
+            element: <PostDetails />,
+            loader: postDetailsLoader
+          }
         ],
       },
     ],
