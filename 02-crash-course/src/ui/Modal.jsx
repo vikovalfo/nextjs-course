@@ -6,8 +6,10 @@ const Modal = ({ children }) => {
 
   return (
     <>
-      <div className={classes.backdrop} onClick={()=> navigate('..')}/>
-      <dialog open className={classes.modal}>{children}</dialog>
+      <div className={classes.backdrop} onClick={() => navigate("..")} />
+      <dialog open className={classes.modal}>
+        {children}
+      </dialog>
     </>
   );
 };
