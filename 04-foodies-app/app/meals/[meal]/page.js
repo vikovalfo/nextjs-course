@@ -1,7 +1,29 @@
-export default function MealDetailsPage() {
+import Image from 'next/image';
+import styles from './page.module.css';
+import { getMeal } from '@/lib/meals';
+
+export default async function MealDetailsPage({ params }) {
+    const meal = await getMeal(params.meal);
+    meal.instructions = meal.instructions.replace(/\n/g, '<br />');
     return (
         <>
-            <h1>Meal</h1>
+            <header className={styles.header}>
+                <div className={styles.image}>
+                    <Image src={meal.image} fill />
+                </div>
+                <div className={styles.headerText}>
+                    <h1>{meal.title}</h1>
+                    <p className={styles.creator}>
+                        by <a href={`mailto:${meal.creator_email}`}>{meal.creator}</a>
+                    </p>
+                    <p className={styles.summary}>
+                        {meal.summary}
+                    </p>
+                </div>
+            </header>
+            <main>
+                <p className={styles.instructions} dangerouslySetInnerHTML={{ __html: meal.instructions }}></p>
+            </main>
         </>
     );
 }
