@@ -20,7 +20,7 @@ export default function ImagePicker({ label, name }) {
         fileReader.readAsDataURL(file);
 
     }
-
+    
     return (
         <div className={styles.picker}>
             <label htmlFor={name}>{label}</label>
