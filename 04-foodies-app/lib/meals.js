@@ -31,11 +31,11 @@ export async function saveMeal(meal) {
         }
     });
 
-    meal.image = `images/${fileName}`;
+    meal.image = `/images/${fileName}`;
 
     db.prepare(`
     INSERT INTO meals
     (title, summary, instructions, creator, creator_email, image, slug)
-    VALUES (?, ?, ?, ?, ?, ?, ?)
+    VALUES (@title, @summary, @instructions, @creator, @creator_email, @image, @slug)
     `).run(meal);
 }
